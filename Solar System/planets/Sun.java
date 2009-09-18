@@ -19,11 +19,12 @@ public class Sun implements ISpaceObject
 	private double mySize;
 	private ArrayList<ISpaceObject> myPlanets;
 	
-	public Sun(double rot, double dist, Vector3 rAxis, double size)
+	public Sun(double rot, double dist, ISpaceObject oCenter, Vector3 rAxis, double size)
 	{
 		myAngle = 0;
 		myRotationSpeed = rot;
 		myDistance = dist;
+		myOrbitCenter = oCenter;
 		myRotationAxis = rAxis;
 		mySize = size;
 		myPlanets = new ArrayList<ISpaceObject>();
@@ -38,6 +39,7 @@ public class Sun implements ISpaceObject
 	{
 		gl.glRotated(myAngle, myRotationAxis.x, myRotationAxis.y, myRotationAxis.z);
 		glut.glutWireSphere(mySize, 20, 20);	//radius, slices, stacks
+		
 		for(ISpaceObject planet: myPlanets)
 		{
 			gl.glPushMatrix();

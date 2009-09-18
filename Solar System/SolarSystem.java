@@ -20,9 +20,9 @@ public class SolarSystem extends Scene
 {
     // animation state
     private float myAngle = 0.0f;
-	Sun sun = new Sun(0.5, 0, new Vector3(0, 1, 0), 1);
-	Planet planet = new Planet(3, 2, new Vector3(0, 1, 0), 0.3);
-	Planet planet2 = new Planet(-2, 4, new Vector3(-0.241, 1, 1.42), 0.8);
+	Sun sun = new Sun(0.5, 0, null, new Vector3(0, 1, 0), 1);
+	Planet planet = new Planet(3, 2, sun, new Vector3(0, 1, 0), 0.3);
+	Planet planet2 = new Planet(-2, 4, sun, new Vector3(-0.241, 1, 1.42), 0.8);
 
 
     /**

@@ -19,11 +19,12 @@ public class Planet implements ISpaceObject
 	private double mySize;
 	private ArrayList<ISpaceObject> myMoons;
 	
-	public Planet(double rot, double dist, Vector3 rAxis, double size)
+	public Planet(double rot, double dist, ISpaceObject oCenter, Vector3 rAxis, double size)
 	{
 		myAngle = 0;
 		myRotationSpeed = rot;
 		myDistance = dist;
+		myOrbitCenter = oCenter;
 		myRotationAxis = rAxis;
 		mySize = size;
 		myMoons = new ArrayList<ISpaceObject>();
@@ -35,6 +36,13 @@ public class Planet implements ISpaceObject
 		gl.glTranslated(myDistance, 0, 0);
 		gl.glRotated(myAngle, myRotationAxis.x, myRotationAxis.y, myRotationAxis.z);
 		glut.glutWireSphere(mySize, 10, 10);
+		
+		for(ISpaceObject moon: myMoons)
+		{
+			gl.glPushMatrix();
+			moon.draw(gl, glu, glut);
+			gl.glPopMatrix();
+		}
 	}
 	
 	public void animate(GL2 gl, GLU glu, GLUT glut)

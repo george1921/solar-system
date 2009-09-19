@@ -22,7 +22,7 @@ public class Main
     public static void main (String[] args)
     {
         // create OpenGL classes
-    	final Scene scene = new SolarSystem(args);       // change this class for your project
+    	final Scene scene = new Display(args);       // change this class for your project
         final GLJPanel canvas = new GLJPanel();
         final Animator animator = new FPSAnimator(canvas, FPS);
         final Listener listener = new Listener(scene, animator);

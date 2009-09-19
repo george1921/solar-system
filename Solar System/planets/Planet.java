@@ -73,6 +73,7 @@ public class Planet implements ISpaceObject
 		
 		gl.glPushMatrix();
 		transform(gl, glu, glut);
+		gl.glRotated(myRotationAngle, myRotationAxis.x, myRotationAxis.y, myRotationAxis.z);
 		glut.glutWireSphere(mySize, 10, 10);
 		gl.glPopMatrix();
 		
@@ -86,19 +87,19 @@ public class Planet implements ISpaceObject
 	
 	public void drawAxis(GL2 gl, GLU glu, GLUT glut)
 	{
+		myOrbitCenter.transform(gl, glu, glut);
 		gl.glColor3d(255, 255, 255);
-		gl.glRotated(myOrbitTilt, myOrbitAxis.x, myOrbitAxis.y, myOrbitAxis.z);
+		gl.glRotated(myOrbitTilt, 1, 0, 0);
 		gl.glTranslated(-myDistance, 0, 0);
 		glut.glutWireTorus(myDistance, myDistance, 100, 1);
 	}
 	
 	public void transform(GL2 gl, GLU glu, GLUT glut)
 	{
-		gl.glRotated(myOrbitTilt, myOrbitAxis.x, myOrbitAxis.y, myOrbitAxis.z);
 		myOrbitCenter.transform(gl, glu, glut);
-		gl.glRotated(myOrbitAngle, 0, 1, 0);
+		gl.glRotated(myOrbitTilt, 1, 0, 0);
+		gl.glRotated(myOrbitAngle, myOrbitAxis.x, myOrbitAxis.y, myOrbitAxis.z);
 		gl.glTranslated(myDistance, 0, 0);
-		gl.glRotated(myRotationAngle, myRotationAxis.x, myRotationAxis.y, myRotationAxis.z);
 		gl.glColor3d(0, 0, 255);
 	}
 	
@@ -120,5 +121,30 @@ public class Planet implements ISpaceObject
 	public String getParentName() 
 	{
 		return myOrbitCenter.getName();
+	}
+
+	public Vector3 getOrbitAxis() 
+	{
+		return myOrbitAxis;
+	}
+
+	public Vector3 getRotationAxis() 
+	{
+		return myRotationAxis;
+	}
+
+	public double getRotationSpeed() 
+	{
+		return myRotationSpeed;
+	}
+	
+	public double getRotationAngle()
+	{
+		return myRotationAngle;
+	}
+
+	public double getOrbitAngle() 
+	{
+		return myOrbitAngle;
 	}
 }

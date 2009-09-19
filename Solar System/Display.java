@@ -60,7 +60,7 @@ public class Display extends Scene
     public void setCamera (GL2 gl, GLU glu, GLUT glut)
     {
         glu.gluLookAt(
-	        -12,  10,  30,            // from position
+	        65,  13,  3,            // from position
 		    0,  0,  0,            // to position
 		    0,  1,  0);           // up direction
     }

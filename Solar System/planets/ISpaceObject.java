@@ -24,4 +24,14 @@ public interface ISpaceObject
 	public void drawAxis(GL2 gl, GLU glu, GLUT glut);
 
 	public void transform(GL2 gl, GLU glu, GLUT glut);
+	
+	public double getRotationSpeed();
+	
+	public double getRotationAngle();
+	
+	public Vector3 getRotationAxis();
+		
+	public Vector3 getOrbitAxis();
+	
+	public double getOrbitAngle();
 }

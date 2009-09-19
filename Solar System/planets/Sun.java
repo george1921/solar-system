@@ -73,6 +73,7 @@ public class Sun implements ISpaceObject
 		
 		gl.glPushMatrix();
 		transform(gl, glu, glut);
+		gl.glRotated(myRotationAngle, myRotationAxis.x, myRotationAxis.y, myRotationAxis.z);
 		glut.glutWireSphere(mySize, 20, 20);	//radius, slices, stacks
 		gl.glPopMatrix();
 		
@@ -91,7 +92,9 @@ public class Sun implements ISpaceObject
 	
 	public void transform(GL2 gl, GLU glu, GLUT glut)
 	{
-		gl.glRotated(myRotationAngle, myRotationAxis.x, myRotationAxis.y, myRotationAxis.z);
+		gl.glRotated(myOrbitTilt, 1, 0, 0);
+		gl.glRotated(myOrbitAngle, myOrbitAxis.x, myOrbitAxis.y, myOrbitAxis.z);
+		gl.glTranslated(myDistance, 0, 0);
 		gl.glColor3d(255, 255, 0);
 	}
 	
@@ -112,5 +115,30 @@ public class Sun implements ISpaceObject
 	public String getParentName() 
 	{
 		return null;
+	}
+
+	public Vector3 getOrbitAxis() {
+		// TODO Auto-generated method stub
+		return myOrbitAxis;
+	}
+
+	public Vector3 getRotationAxis() {
+		// TODO Auto-generated method stub
+		return myRotationAxis;
+	}
+
+	public double getRotationSpeed() {
+		// TODO Auto-generated method stub
+		return myRotationSpeed;
+	}
+	
+	public double getRotationAngle()
+	{
+		return myRotationAngle;
+	}
+
+	public double getOrbitAngle() {
+		// TODO Auto-generated method stub
+		return myOrbitAngle;
 	}
 }

@@ -5,6 +5,7 @@ import math.Point3;
 import math.Vector3;
 import planets.ISpaceObject;
 import planets.Planet;
+import planets.SolarSystem;
 import planets.Sun;
 
 import com.sun.opengl.util.gl2.GLUT;
@@ -16,14 +17,11 @@ import java.util.*;
  * 
  * @author Robert C. Duvall
  */
-public class SolarSystem extends Scene
+public class Display extends Scene
 {
     // animation state
     private float myAngle = 0.0f;
-	Sun sun = new Sun(0.5, 0, null, new Vector3(0, 1, 0), 1);
-	Planet planet = new Planet(3, 2, sun, new Vector3(0, 1, 0), 0.3);
-	Planet planet2 = new Planet(-2, 4, sun, new Vector3(-0.241, 1, 1.42), 0.8);
-
+	SolarSystem ss = new SolarSystem();
 
     /**
      * Create the scene with the given arguments.
@@ -32,7 +30,7 @@ public class SolarSystem extends Scene
      * 
      * @param args command-line arguments
      */
-    public SolarSystem (String[] args)
+    public Display (String[] args)
     {
         // do nothing
     }
@@ -43,7 +41,7 @@ public class SolarSystem extends Scene
      */
     public String getTitle ()
     {
-        return "A spinning teapot!";
+        return "A solar system!";
     }
 
 
@@ -52,11 +50,7 @@ public class SolarSystem extends Scene
      */
     public void display (GL2 gl, GLU glu, GLUT glut)
     {
-    	ArrayList<ISpaceObject> list = new ArrayList<ISpaceObject>();
-    	list.add(planet);
-    	list.add(planet2);
-    	sun.addPlanets(list);
-    	sun.draw(gl, glu, glut);
+    	ss.draw(gl, glu, glut);
     }
 
 
@@ -66,9 +60,9 @@ public class SolarSystem extends Scene
     public void setCamera (GL2 gl, GLU glu, GLUT glut)
     {
         glu.gluLookAt(
-	        0,  10,  0,            // from position
+	        -12,  10,  30,            // from position
 		    0,  0,  0,            // to position
-		    0,  0,  1);           // up direction
+		    0,  1,  0);           // up direction
     }
 
 
@@ -79,7 +73,7 @@ public class SolarSystem extends Scene
      */
     public void animate (GL2 gl, GLU glu, GLUT glut)
     {
-    	sun.animate(gl, glu, glut);
+    	ss.animate(gl, glu, glut);
         // animate model by spinning it a few degrees each time
 //        myAngle += 4;
     }

@@ -30,7 +30,7 @@ public class Display extends Scene
     private Point3 myCamFrom;
     private Point3 myCamTo;
     private Point3 myCamUp;
-	private SolarSystem ss = new SolarSystem();
+	private SolarSystem ss;
 
     /**
      * Create the scene with the given arguments.
@@ -41,6 +41,10 @@ public class Display extends Scene
      */
     public Display (String[] args)
     {
+        myCamFrom = new Point3();
+        myCamTo = new Point3();
+        myCamUp = new Point3();
+    	ss = new SolarSystem();
         setDefaultCamera();
     }
 
@@ -112,10 +116,10 @@ public class Display extends Scene
 		    	break;
 		    // Camera movement: Current implementation rotates around the spot.
             case KeyEvent.VK_LEFT:
-            	myCamTo.sub(rightDir);
+            	myCamTo.add(rightDir);
             	break;
             case KeyEvent.VK_RIGHT:
-            	myCamTo.add(rightDir);
+            	myCamTo.sub(rightDir);
             	break;
             case KeyEvent.VK_UP:
             	myCamTo.add(upDir);
@@ -137,12 +141,18 @@ public class Display extends Scene
     	
         switch (keyCode)
         {
-            // toggle animation running
             case KeyEvent.VK_H:
-                // hide orbits
+                // TODO: hide orbits
+            	ss.toggleOrbit(false);
+                break;
+            case KeyEvent.VK_J:
+                // TODO: show orbits
+            	ss.toggleOrbit(true);
                 break;
             case KeyEvent.VK_R:
-            	// restart simulation
+            	// TODO: restart simulation
+            	setDefaultCamera();
+            	ss = new SolarSystem();
             	break;
             // Reset camera view
             case KeyEvent.VK_C:
@@ -170,13 +180,9 @@ public class Display extends Scene
     }
     
 	private void setDefaultCamera() {
-		myCamFrom = DEFAULT_CAMERA_FROM;
-        myCamTo = DEFAULT_CAMERA_TO;
-        myCamUp = DEFAULT_CAMERA_UP;
+		myCamFrom.set(DEFAULT_CAMERA_FROM);
+        myCamTo.set(DEFAULT_CAMERA_TO);
+        myCamUp.set(DEFAULT_CAMERA_UP);
 	}
 	
-	public void resetDisplay()
-	{
-		
-	}
 }

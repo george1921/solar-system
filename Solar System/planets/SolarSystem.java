@@ -118,4 +118,13 @@ public class SolarSystem
 	{
 		myObjects.get(0).animate(gl, glu, glut);
 	}
+	
+	public void toggleOrbit(boolean toggle)
+	{
+		for(ISpaceObject o: myObjects)
+		{
+			o.toggleOrbit(toggle);
+		}
+		
+	}
 }

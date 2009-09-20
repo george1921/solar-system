@@ -34,4 +34,6 @@ public interface ISpaceObject
 	public Vector3 getOrbitAxis();
 	
 	public double getOrbitAngle();
+
+	public void toggleOrbit(boolean toggle);
 }

@@ -24,6 +24,7 @@ public class Sun implements ISpaceObject
 	private double myRotationTilt;
 	private double myOrbitAngle;
 	private double myOrbitSpeed;
+	private boolean myShowOrbit;
 	
 	public Sun()
 	{
@@ -40,6 +41,7 @@ public class Sun implements ISpaceObject
 		myRotationTilt = 0;
 		myOrbitAngle = 0;
 		myOrbitSpeed = 0;
+		myShowOrbit = true;
 	}
 		
 	public void setParameters(double rot, double dist, ISpaceObject oCenter, Vector3 rAxis, double size, String name, Vector3 oAxis, double oTilt, double rTilt, double oSpeed)
@@ -64,11 +66,14 @@ public class Sun implements ISpaceObject
 
 	public void draw(GL2 gl, GLU glu, GLUT glut) 
 	{	
-		for(ISpaceObject planet: myPlanets)
+		if(myShowOrbit)
 		{
-			gl.glPushMatrix();
-			planet.drawAxis(gl, glu, glut);
-			gl.glPopMatrix();
+			for(ISpaceObject planet: myPlanets)
+			{
+				gl.glPushMatrix();
+				planet.drawAxis(gl, glu, glut);
+				gl.glPopMatrix();
+			}
 		}
 		
 		gl.glPushMatrix();
@@ -140,5 +145,10 @@ public class Sun implements ISpaceObject
 	public double getOrbitAngle() {
 		// TODO Auto-generated method stub
 		return myOrbitAngle;
+	}
+
+	public void toggleOrbit(boolean toggle) 
+	{
+		myShowOrbit = toggle;
 	}
 }

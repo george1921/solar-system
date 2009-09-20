@@ -30,7 +30,7 @@ public class Display extends Scene
     private Point3 myCamFrom;
     private Point3 myCamTo;
     private Point3 myCamUp;
-	SolarSystem ss = new SolarSystem();
+	private SolarSystem ss = new SolarSystem();
 
     /**
      * Create the scene with the given arguments.
@@ -173,5 +173,10 @@ public class Display extends Scene
 		myCamFrom = DEFAULT_CAMERA_FROM;
         myCamTo = DEFAULT_CAMERA_TO;
         myCamUp = DEFAULT_CAMERA_UP;
+	}
+	
+	public void resetDisplay()
+	{
+		
 	}
 }

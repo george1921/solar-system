@@ -21,7 +21,7 @@ public interface ISpaceObject
 	
 	public String getParentName();
 
-	public void drawAxis(GL2 gl, GLU glu, GLUT glut);
+	public void drawOrbit(GL2 gl, GLU glu, GLUT glut);
 
 	public void transform(GL2 gl, GLU glu, GLUT glut);
 	
@@ -36,4 +36,8 @@ public interface ISpaceObject
 	public double getOrbitAngle();
 
 	public void toggleOrbit(boolean toggle);
+	
+	public void colorOrbit(GL2 gl, GLU glu, GLUT glut);
+	
+	public void colorObject(GL2 gl, GLU glu, GLUT glut);
 }

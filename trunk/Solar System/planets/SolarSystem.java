@@ -105,10 +105,12 @@ public class SolarSystem
 	
 	private void add(ISpaceObject obj)
 	{
+		System.out.println(obj.getParentName());
 		for(ISpaceObject o: myObjects)
 		{
 			if(o.getName().equals(obj.getParentName()))
 			{
+				System.out.println(obj.getName() + " added to " + o.getName());
 				o.add(obj);
 			}
 		}

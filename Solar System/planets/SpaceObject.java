@@ -94,7 +94,7 @@ public class SpaceObject implements ISpaceObject
 	{
 		myOrbitCenter.transform(gl, glu, glut);
 		colorOrbit(gl, glu, glut);
-		gl.glRotated(myOrbitTilt, 1, 0, 0);
+		gl.glRotated(myOrbitTilt, myOrbitAxis.x, myOrbitAxis.y, myOrbitAxis.z);
 		gl.glTranslated(-myDistance, 0, 0);
 		glut.glutWireTorus(myDistance, myDistance, 100, 1);
 	}
@@ -102,8 +102,8 @@ public class SpaceObject implements ISpaceObject
 	public void transform(GL2 gl, GLU glu, GLUT glut)
 	{
 		myOrbitCenter.transform(gl, glu, glut);
-		gl.glRotated(myOrbitTilt, 1, 0, 0);
-		gl.glRotated(myOrbitAngle, myOrbitAxis.x, myOrbitAxis.y, myOrbitAxis.z);
+		gl.glRotated(myOrbitTilt, myOrbitAxis.x, myOrbitAxis.y, myOrbitAxis.z);
+		gl.glRotated(myOrbitAngle, 0, 1, 0);
 		gl.glTranslated(myDistance, 0, 0);
 		colorObject(gl, glu, glut);
 	}
